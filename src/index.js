@@ -21,24 +21,33 @@ class App extends Component {
       selectedVideo: null
     };
 
-    YTSearch({key: YOUTUBE_API_KEY, term: 'Best Views Niagra Falls'}, responseData => {
+    this.handleVideoSearch('Best Views of Niagra Falls')
+  }
+
+  handleVideoSelection = selectedVideo => {
+    this.setState({ selectedVideo });
+  };
+
+  handleVideoSearch = searchInput => {
+    YTSearch({key: YOUTUBE_API_KEY, term: searchInput}, responseData => {
       this.setState({
         videos: responseData,
         selectedVideo : responseData[0]
       });
     });
-
-  }
-
-  handleVideoSelection = selectedVideo => {
-    this.setState({ selectedVideo });
-  }
+  };
 
   render() {
     return (
       <div>
-        <SearchBar />
-        <VideoPlayer video={this.state.selectedVideo}  />
+        <SearchBar
+          handleVideoSearch={this.handleVideoSearch}
+        />
+
+        <VideoPlayer
+          video={this.state.selectedVideo}
+        />
+
         <RecommendedVideos
           videos={this.state.videos}
           handleVideoSelection={this.handleVideoSelection}
