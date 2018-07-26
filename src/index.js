@@ -6,6 +6,7 @@ import YTSearch from 'youtube-api-search'
 //Component imports
 import registerServiceWorker from './registerServiceWorker';
 import SearchBar from './components/search-bar';
+import RecommendedVideos from './components/recommended-videos'
 
 //Constants
 const YOUTUBE_API_KEY = 'AIzaSyAW7ur12ki2OI9IewLaVX95x2e0QQOyVpA';
@@ -28,6 +29,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar />
+        <RecommendedVideos videos={this.state.videos} />
       </div>
     );
   }
