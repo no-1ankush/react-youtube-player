@@ -9,7 +9,11 @@ class RecommendedVideos extends Component {
     return (
       <ul>
         {this.props.videos.map(video => (
-          <Video key={video.etag} video={video} />
+          <Video
+            handleVideoSelection={this.props.handleVideoSelection}
+            key={video.etag}
+            video={video}
+          />
         ))}
       </ul>
     );

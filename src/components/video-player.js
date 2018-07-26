@@ -9,7 +9,7 @@ class VideoPlayer extends Component {
     const videoURL = `https://www.youtube.com/embed/${this.props.video.id.videoId}`;
     return (
       <div>
-        <iframe src={videoURL}/>
+        <iframe src={videoURL} title={this.props.video.snippet.title}/>
         <div>{this.props.video.snippet.title}</div>
         <div>{this.props.video.snippet.description}</div>
       </div>

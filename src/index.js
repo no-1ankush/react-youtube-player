@@ -30,12 +30,19 @@ class App extends Component {
 
   }
 
+  handleVideoSelection = selectedVideo => {
+    this.setState({ selectedVideo });
+  }
+
   render() {
     return (
       <div>
         <SearchBar />
-        <VideoPlayer video={this.state.selectedVideo}/>
-        <RecommendedVideos videos={this.state.videos} />
+        <VideoPlayer video={this.state.selectedVideo}  />
+        <RecommendedVideos
+          videos={this.state.videos}
+          handleVideoSelection={this.handleVideoSelection}
+        />
       </div>
     );
   }
