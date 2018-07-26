@@ -6,6 +6,7 @@ import YTSearch from 'youtube-api-search'
 //Component imports
 import registerServiceWorker from './registerServiceWorker';
 import SearchBar from './components/search-bar';
+import VideoPlayer from './components/video-player';
 import RecommendedVideos from './components/recommended-videos'
 
 //Constants
@@ -16,11 +17,15 @@ class App extends Component {
     super(props);
 
     this.state = {
-      videos: []
+      videos: [],
+      selectedVideo: null
     };
 
-    YTSearch({key: YOUTUBE_API_KEY, term: 'Search Youtube'}, responseData => {
-      this.setState({videos: responseData});
+    YTSearch({key: YOUTUBE_API_KEY, term: 'Best Views Niagra Falls'}, responseData => {
+      this.setState({
+        videos: responseData,
+        selectedVideo : responseData[0]
+      });
     });
 
   }
@@ -29,6 +34,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar />
+        <VideoPlayer video={this.state.selectedVideo}/>
         <RecommendedVideos videos={this.state.videos} />
       </div>
     );
