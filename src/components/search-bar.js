@@ -17,8 +17,10 @@ class SearchBar extends Component {
     return (
       <div>
         <input
-          value={this.state.searchInput}
-          onChange={this.handleVideoSearch} />
+          id="search-bar"
+          placeholder="Search"
+          onChange={this.handleVideoSearch}
+        />
       </div>
     )
   };
